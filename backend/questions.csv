@@ -1,11 +1,11 @@
-question_topic,question_type,question_level,question,answer,option1,isOption1,option2,isOption2,option3,isOption3,option4,isOption4,question_course
-Generic,mcq,Expert,abcd,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Generic
-Generic,mcq,Expert,efgh,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Generic
-Generic,mcq,Expert,ijkl,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Generic
-Generic,mcq,Expert,lmno,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Generic
-Generic,mcq,Expert,pqrs,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Generic
-Generic,mcq,Expert,tuvw,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Generic
-Generic,mcq,Expert,xyza,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Generic
-Generic,mcq,Expert,bcde,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Generic
-Generic,mcq,Expert,fghi,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Generic
-Generic,mcq,Expert,jkl,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Generic
+question_topic,question_type,question_level,question,answer,option1,isOption1,option2,isOption2,option3,isOption3,option4,isOption4,question_course,question_module,,score,answer_given
+CSS,mcq,Expert,abcd,d,a,FALSE,b,TRUE,c,FALSE,d,FALSE,Core UI,1,,10,
+CSS,mcq,Expert,efgh,d,a,FALSE,b,FALSE,c,TRUE,d,FALSE,Core UI,2,,10,
+CSS,mcq,Expert,ijkl,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Core UI,3,,10,blah
+CSS,mcq,Expert,lmno,d,a,FALSE,b,FALSE,c,TRUE,d,FALSE,Core UI,3,,10,
+CSS,mcq,Expert,pqrs,d,a,TRUE,b,FALSE,c,FALSE,d,FALSE,Core UI,2,,10,
+CSS,mcq,Expert,tuvw,d,a,FALSE,b,TRUE,c,FALSE,d,FALSE,Core UI,4,,10,
+CSS,mcq,Expert,xyza,d,a,FALSE,b,TRUE,c,FALSE,d,FALSE,Core UI,5,,10,
+CSS,mcq,Expert,bcde,d,a,FALSE,b,FALSE,c,TRUE,d,FALSE,Core UI,3,,10,
+CSS,mcq,Expert,fghi,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Core UI,2,,10,
+CSS,mcq,Expert,jkl,d,a,FALSE,b,FALSE,c,FALSE,d,TRUE,Core UI,1,,10,

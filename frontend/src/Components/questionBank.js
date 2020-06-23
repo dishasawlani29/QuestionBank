@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Header from "./header.js";
+import Footer from "./footer.js";
 
 export default class QuestionBank extends Component {
   constructor(props) {
@@ -8,6 +10,7 @@ export default class QuestionBank extends Component {
 
     this.state = {
       question_course: "Javascript",
+      question_module: "1",
       question_topic: "Javascript",
       question_type: "",
       question_level: "Easy/Beginner",
@@ -25,6 +28,7 @@ export default class QuestionBank extends Component {
       isOption4: false,
       questions: [],
       file: null,
+      score: null,
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -99,7 +103,8 @@ export default class QuestionBank extends Component {
     e.preventDefault();
 
     console.log("Form Submitted: ");
-    console.log("Question Topic :" + this.state.question_course);
+    console.log("Question Course :" + this.state.question_course);
+    console.log("Question Module :" + this.state.question_module);
     console.log("Question Topic :" + this.state.question_topic);
     console.log("Question Level :" + this.state.question_level);
     console.log("Question Type :" + this.state.question_type);
@@ -112,12 +117,14 @@ export default class QuestionBank extends Component {
     console.log("Is Option 3 correct?:" + this.state.isOption3);
     console.log("Option4:" + this.state.option4);
     console.log("Is Option 4 correct?:" + this.state.isOption4);
+    console.log("Score : " + this.state.score);
 
     console.log("Answer:" + this.state.answer);
     console.log("Time:" + this.state.time);
 
     const newQuestion = {
       question_course: this.state.question_course,
+      question_module: this.state.question_module,
       question_topic: this.state.question_topic,
       question_type: this.state.question_type,
       question_level: this.state.question_level,
@@ -132,6 +139,7 @@ export default class QuestionBank extends Component {
       option4: this.state.option4,
       isOption4: this.state.isOption4,
       time: this.state.time,
+      score: this.state.score,
     };
 
     axios
@@ -140,6 +148,7 @@ export default class QuestionBank extends Component {
 
     this.setState({
       question_course: "Javascript",
+      question_module: "1",
       question_topic: "Javascript",
       question_type: "",
       question_level: "Easy/Beginner",
@@ -155,6 +164,7 @@ export default class QuestionBank extends Component {
       isOption3: false,
       option4: "",
       isOption4: false,
+      score: null,
     });
     this.fetchQuestions();
   }
@@ -162,6 +172,7 @@ export default class QuestionBank extends Component {
   render() {
     return (
       <div>
+        <Header />
         {/* <h1>Add Course Component</h1> */}
         <div class="row container-fluid">
           <div class="col-md-4">
@@ -211,10 +222,28 @@ export default class QuestionBank extends Component {
                   value={this.state.question_course}
                   onChange={this.handleChange}
                 >
+                  <option>Core UI</option>
                   <option>Javascript</option>
                   <option>HTML</option>
                   <option>CSS</option>
                   <option>Python</option>
+                </select>
+              </div>
+
+              <div class="course">
+                <p id="heading"> Select Module</p>
+                <select
+                  class="form-control"
+                  id="sel1"
+                  name="question_module"
+                  value={this.state.question_module}
+                  onChange={this.handleChange}
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
                 </select>
               </div>
 
@@ -252,6 +281,19 @@ export default class QuestionBank extends Component {
                 </select>
               </div>
 
+              <div class="level">
+                <p id="heading"> Score</p>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="sel3"
+                  value={this.state.score}
+                  // onChange={this.onChangeQuestionLevel}
+                  onChange={this.handleChange}
+                  name="score"
+                />
+              </div>
+
               <div class="questype">
                 <p id="heading"> Add Question Type</p>
                 <select
@@ -266,8 +308,9 @@ export default class QuestionBank extends Component {
                     placeholder="eg. mcq, subjective, true/false"
                     value=" "
                   ></option>
-                  <option value="mcq">MCQ - 1</option>
+                  <option value="mcq">MCQ</option>
                   <option value="subjective">Subjective - 2</option>
+                  <option value="ts">Technical Sceanrio</option>
                   <option value="truefalse">True/False - 1</option>
                 </select>
               </div>
@@ -460,11 +503,13 @@ export default class QuestionBank extends Component {
                   <tr id="table-head">
                     <th>QUESTION COURSE</th>
                     <th>QUESTION MODULE</th>
+                    <th>QUESTION TOPIC</th>
                     <th>QUESTION TYPE</th>
-                    <th>QUESTION</th>
-
-                    <th>ANSWER</th>
                     <th>LEVEL OF PROBLEM</th>
+                    <th>SCORE</th>
+                    <th>QUESTION</th>
+                    <th>given</th>
+                    <th>ANSWER</th>
 
                     <th>EDIT/ UPDATE</th>
                   </tr>
@@ -472,11 +517,18 @@ export default class QuestionBank extends Component {
                     {this.state.questions.map((currentQuestion, i) => (
                       <tr>
                         <td>{currentQuestion.question_course}</td>
+                        <td>{currentQuestion.question_module}</td>
                         <td>{currentQuestion.question_topic}</td>
                         <td>{currentQuestion.question_type}</td>
+                        <td>{currentQuestion.question_level}</td>
+                        <td>{currentQuestion.score}</td>
                         <td>{currentQuestion.question}</td>
+                        <td>{currentQuestion.answer_given}</td>
 
                         {currentQuestion.question_type === "subjective" && (
+                          <td>{currentQuestion.answer}</td>
+                        )}
+                        {currentQuestion.question_type === "ts" && (
                           <td>{currentQuestion.answer}</td>
                         )}
                         {currentQuestion.question_type === "truefalse" && (
@@ -573,8 +625,6 @@ export default class QuestionBank extends Component {
                           </td>
                         )}
 
-                        <td>{currentQuestion.question_level}</td>
-
                         <td>
                           <Link
                             to={
@@ -610,6 +660,7 @@ export default class QuestionBank extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

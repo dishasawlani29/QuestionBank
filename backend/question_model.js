@@ -5,6 +5,9 @@ let Question = new Schema({
   question_course: {
     type: String,
   },
+  question_module: {
+    type: String,
+  },
   question_topic: {
     type: String,
   },
@@ -45,6 +48,12 @@ let Question = new Schema({
     type: Boolean,
   },
   time: {
+    type: String,
+  },
+  score: {
+    type: Number,
+  },
+  answer_given: {
     type: String,
   },
 });
